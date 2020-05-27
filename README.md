@@ -16,7 +16,7 @@ Gal Game
 * message_controller.rb -> ゲーム稼働関連メッセージを出力するモジュール
 
 
-# how to use
+# how to play
 ```
 (a) main.rbの主人公、ヒロインの名前をお好みの名前に変更。
 (b) ruby main.rb で起動。
