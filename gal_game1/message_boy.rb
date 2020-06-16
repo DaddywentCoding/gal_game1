@@ -222,45 +222,44 @@ module MessageBoy
 	end
 
 	def flu_message(hp_flu, love_flu, target: target)
-		@target = target
 		if hp_flu > 0 && love_flu > 0
 			puts <<~EOS
 			------------------------------------
 			#{@name}のHPが#{hp_flu}あがった。
-			#{@target.name}の好感度が#{love_flu}あがった。
+			#{target.name}の好感度が#{love_flu}あがった。
 			-------------------------------------
 			EOS
 		elsif hp_flu < 0 && love_flu > 0
 			puts <<~EOS
 			------------------------------------
 			#{@name}のHPが#{hp_flu}さがった。
-			#{@target.name}の好感度が#{love_flu}あがった。
+			#{target.name}の好感度が#{love_flu}あがった。
 			-------------------------------------
 			EOS
 		elsif hp_flu > 0 && love_flu < 0
 			puts <<~EOS
 			------------------------------------
 			#{@name}のHPが#{hp_flu}あがった。
-			#{@target.name}の好感度が#{love_flu}さがった。
+			#{target.name}の好感度が#{love_flu}さがった。
 			-------------------------------------
 			EOS
 		elsif hp_flu < 0 && love_flu < 0
 			puts <<~EOS
 			------------------------------------
 			#{@name}のHPが#{hp_flu}さがった。
-			#{@target.name}の好感度が#{love_flu}さがった。
+			#{target.name}の好感度が#{love_flu}さがった。
 			-------------------------------------
 			EOS
 		elsif hp_flu == 0 && love_flu > 0
 			puts <<~EOS
 			------------------------------------
-			#{@target.name}の好感度が#{love_flu}あがった。
+			#{target.name}の好感度が#{love_flu}あがった。
 			-------------------------------------
 			EOS
 		elsif hp_flu == 0 && love_flu < 0
 			puts <<~EOS
 			------------------------------------
-			#{@target.name}の好感度が#{love_flu}さがった。
+			#{target.name}の好感度が#{love_flu}さがった。
 			-------------------------------------
 			EOS
 		elsif hp_flu > 0 && love_flu == 0
