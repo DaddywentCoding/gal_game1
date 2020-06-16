@@ -2,35 +2,35 @@ require "./message_games_controller"
 
 class GamesController
 
-	include MessageGamesController
+	include GamesMessage
 
 	def game_play(**params)
 		build_characters(params)
 
 		day = 1
 
-			introduce_message(boy: @boy, girl: @girl)
+		introduce_message(boy: @boy, girl: @girl)
 
+		status_enter
+
+		status_message(boy: @boy, girl: @girl)
+
+		story_enter
+
+		loop do
+			puts "#{day}日目"
+			@boy.decision_action_type(girl: @girl)
+			
 			status_enter
 
+			value_flat
+
 			status_message(boy: @boy, girl: @girl)
-
-			story_enter
-
-			loop do
-				puts "#{day}日目"
-				@boy.decision_action_type(girl: @girl)
-				
-				status_enter
-
-				value_flat
-
-				status_message(boy: @boy, girl: @girl)
 			break if game_play_end?
 
-				day += 1
-				story_enter
-			end
+			day += 1
+			story_enter
+		end
 		game_play_jadgment
 	end
 
