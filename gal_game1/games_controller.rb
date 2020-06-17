@@ -36,7 +36,12 @@ class GamesController
 
 	def build_characters(**params)
 		@boy = params[:boy]
+
+		input_boy_name(boy: @boy)
+
 		@girl = params[:girl]
+		
+		input_girl_name(girl: @girl)
 	end
 
 	def value_flat

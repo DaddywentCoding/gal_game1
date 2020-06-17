@@ -1,20 +1,51 @@
 module GamesMessage
-	def introduce_message(**params)
-puts <<~EOS
-ゲーム概要
-----------------------------------------------
-#{params[:boy].name}は#{params[:girl].name}のことが好きです。
-あなたの力で二人をくっつけよう！
-----------------------------------------------
 
-ルール説明
-----------------------------------------------
-*Enterキーを押すと、物語が進んでいきます。
-*#{params[:boy].name}のHPが0になるとゲームオーバー。
-*#{params[:girl].name}の好感度が10になると二人は結婚します。
-Let's start!!!!!!
-----------------------------------------------
-EOS
+	def input_boy_name(**params)
+		boy = params[:boy]
+		puts "主人公の名前を入力してください"
+		boy.name = gets.chomp
+		loop do
+			if boy.name.empty?
+		    puts "主人公の名前を入力してください"
+		    boy.name = gets.chomp
+	  	else
+	  		 break
+	  	end
+  	end
+	end
+
+	def input_girl_name(**params)
+		girl = params[:girl]
+		puts "ヒロインの名前を入力してください"
+		girl.name = gets.chomp
+		loop do
+			if girl.name.empty?
+		    puts "ヒロインの名前を入力してください"
+		    girl.name = gets.chomp
+	  	else
+	  		 break
+	  	end
+  	end
+	end
+
+	def introduce_message(**params)
+		boy = params[:boy]
+		girl = params[:girl]
+		puts <<~EOS
+		ゲーム概要
+		----------------------------------------------
+		#{boy.name}は#{girl.name}のことが好きです。
+		あなたの力で二人をくっつけよう！
+		----------------------------------------------
+
+		ルール説明
+		----------------------------------------------
+		*Enterキーを押すと、物語が進んでいきます。
+		*#{boy.name}のHPが0になるとゲームオーバー。
+		*#{girl.name}の好感度が10になると二人は結婚します。
+		Let's start!!!!!!
+		----------------------------------------------
+		EOS
 	end
 
 	def status_enter
@@ -36,28 +67,34 @@ EOS
 	end
 
 	def status_message(**params)
+		boy = params[:boy]
+		girl = params[:girl]
 		puts <<~EOS
-			現在のステータス
-			--------------------------
-			#{params[:boy].name}のHP：#{params[:boy].hp}
-			#{params[:boy].name}への好感度：#{params[:girl].love_grade}
-			----------------------------
-			EOS
+		現在のステータス
+		--------------------------
+		#{boy.name}のHP：#{boy.hp}
+		#{boy.name}への好感度：#{girl.love_grade}
+		----------------------------
+		EOS
 	end
 
 	def jadgment_true_message(**params)
+		boy = params[:boy]
+		girl = params[:girl]
 		puts <<~EOS
-			#{params[:boy].name}と#{params[:girl].name}は結婚した。
-			死ぬまで仲良く暮らしましたとさ。めでたしめでたし。
-			EOS
+		#{boy.name}と#{girl.name}は結婚した。
+		死ぬまで仲良く暮らしましたとさ。めでたしめでたし。
+		EOS
 	end
 
 	def jadgment_bad_message(**params)
+		boy = params[:boy]
+		girl = params[:girl]
 		puts <<~EOS
-			#{params[:boy].name}は#{params[:girl].name}に振られた。
-			#{params[:boy].name}はショックから引きこもりニートになった。
-			#{params[:girl].name}はIT企業の社長と結婚した。
-			ああ~~~~ 無情
-			EOS
+		#{boy.name}は#{girl.name}に振られた。
+		#{boy.name}はショックから引きこもりニートになった。
+		#{girl.name}はIT企業の社長と結婚した。
+		ああ~~~~ 無情
+		EOS
 	end
 end
