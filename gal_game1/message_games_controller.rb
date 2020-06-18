@@ -5,12 +5,12 @@ module GamesMessage
 		character.name1 = gets.chomp
 		loop do
 			if character.name1.empty?
-		    puts "主人公の名前を入力してください"
-		    character.name1 = gets.chomp
-	  	else
-	  		 break
-	  	end
-  	end
+				puts "主人公の名前を入力してください"
+				character.name1 = gets.chomp
+			else
+				break
+			end
+		end
 	end
 
 	def input_character_name2(character)
@@ -18,12 +18,12 @@ module GamesMessage
 		character.name2 = gets.chomp
 		loop do
 			if character.name2.empty?
-		    puts "ヒロインの名前を入力してください"
-		    character.name2 = gets.chomp
-	  	else
-	  		 break
-	  	end
-  	end
+				puts "ヒロインの名前を入力してください"
+				character.name2 = gets.chomp
+			else
+				break
+			end
+		end
 	end
 
 	def introduce_message(character)
@@ -79,7 +79,7 @@ module GamesMessage
 		EOS
 	end
 
-	def jadgment_bad_message(**params)
+	def jadgment_bad_message(character)
 		puts <<~EOS
 		#{character.name1}は#{character.name2}に振られた。
 		#{character.name1}はショックから引きこもりニートになった。
