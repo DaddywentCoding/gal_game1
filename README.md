@@ -9,17 +9,16 @@ Gal Game
 # file structure
 このアプリは以下のファイルで構成されています。
 * main.rb -> 実行プログラム
-* boy.rb -> 主人公のデータ、コマンド
-* girl.rb -> ヒロインのデータ
+* character.rb -> 登場人物のデータ、コマンド
 * games_controller.rb -> ゲーム稼働に関するコマンド
-* message_boy.rb -> イベント関連のメッセージを出力するモジュール
-* message_controller.rb -> ゲーム稼働関連メッセージを出力するモジュール
+* character_message.rb -> イベント関連のメッセージを出力するモジュール
+* message_games_controller.rb -> ゲーム稼働関連メッセージを出力するモジュール
 
 
 # how to play
 ```
-(a) main.rbの主人公、ヒロインの名前をお好みの名前に変更。
-(b) ruby main.rb で起動。
+(a) ruby main.rb で起動。
+(b) 主人公、ヒロインの名前を入力。
 (b) 運に任せてエンターキーを押し続ける。
 (c) 主人公とヒロインが結婚すればゲームクリア。
 (d) 主人公がフラれるとゲームオーバー。
