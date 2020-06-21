@@ -4,29 +4,27 @@ class Character
 
 	include CharacterMessage
 
-	attr_accessor :name1, :name2, :hp, :love_grade
+	attr_accessor :name, :hp, :love_grade
 
-	def initialize(name1:, name2:, hp:, love_grade:)
-		@name1 = name1
-		@name2 = name2
+	def initialize(name:, hp:, love_grade:)
+		@name = name
 		@hp = hp
 		@love_grade = love_grade	
 	end
 
-	def decision_action_type(character)
+	def boy_action(boy, girl)
 		action_num = rand(20)
-		action_message(character, action_num)
-
-		calculate(character)
+		decision_message_and_flu(boy, girl, action_num)
 	end
 
-	def calculate(character)
-		hp_flu = rand(-3..3)
-		love_flu = rand(-3..3)
+	private
+	def calculate(boy, girl, hp_flu, love_flu)
 
-		@hp += hp_flu
-		character.love_grade += love_flu
+		boy.hp += hp_flu
+		girl.love_grade += love_flu
 
-		flu_message(hp_flu, love_flu, character)
+		value_flat(boy, girl)
+
+		flu_message(boy, girl, hp_flu, love_flu)
 	end
 end
