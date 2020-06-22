@@ -25,7 +25,7 @@ class GamesController
 
 		loop do
 			puts "#{@day}日目"
-			@boy.boy_action(@girl)
+			@boy.boy_action(@boy, @girl)
 			
 			status_enter
 
