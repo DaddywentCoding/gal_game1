@@ -5,31 +5,31 @@ class GamesController
 	include GamesMessage
 
 	def initialize
-    @boy = Character.new(name: "", hp: 10, love_grade: 0)
-		@girl = Character.new(name: "", hp: 10, love_grade: 0)
+    @player = Character.new(name: "", hp: 10, love_grade: 0)
+		@target = Character.new(name: "", hp: 10, love_grade: 0)
     @day = 1
 
-    input_boy_name
-		input_girl_name
+    @player.name = input_boy_name
+		@target.name = input_girl_name
    end
 
 	def game_play
 
-		introduce_message(@boy, @girl)
+		introduce_message(@player, @target)
 
 		status_enter
 
-		status_message(@boy, @girl)
+		status_message(@player, @target)
 
 		story_enter
 
 		loop do
 			puts "#{@day}日目"
-			@boy.boy_action(@boy, @girl)
+			@player.action(@target)
 			
 			status_enter
 
-			status_message(@boy, @girl)
+			status_message(@player, @target)
 			break if game_play_end?
 
 			@day += 1
@@ -38,41 +38,24 @@ class GamesController
 		game_play_jadgment
 	end
 
-
 	private
 
-	def input_boy_name
-		loop do
-      puts "主人公の名前を入力してください"
-      @boy.name = gets.chomp
-      break @boy.name unless @boy.name.empty?
-     end
-	end
-
-	def input_girl_name
-		loop do
-      puts "ヒロインの名前を入力してください"
-      @girl.name = gets.chomp
-      break @girl.name unless @girl.name.empty?
-     end
-	end
-
 	def game_play_end?
-		@boy.hp <= 0 || @girl.love_grade >= 10
+		@player.hp <= 0 || @target.love_grade >= 10
 	end
 
 	def girl_likes_him?
-		@girl.love_grade == 10
+		@target.love_grade == 10
 	end
 
 	def game_play_jadgment
 		if girl_likes_him?
 
-			jadgment_true_message(@boy, @girl)
+			jadgment_true_message(@player, @target)
 			
 		else
 
-			jadgment_bad_message(@boy, @girl)
+			jadgment_bad_message(@player, @target)
 			
 		end
 	end
