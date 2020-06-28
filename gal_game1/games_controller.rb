@@ -5,13 +5,13 @@ class GamesController
 	include GamesMessage
 
 	def initialize
-    @player = Character.new(name: "", hp: 10, love_grade: 0)
+		@player = Character.new(name: "", hp: 10, love_grade: 0)
 		@target = Character.new(name: "", hp: 10, love_grade: 0)
-    @day = 1
+		@day = 1
 
-    @player.name = input_boy_name
+		@player.name = input_boy_name
 		@target.name = input_girl_name
-   end
+	end
 
 	def game_play
 

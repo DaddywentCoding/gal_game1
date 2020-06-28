@@ -16,7 +16,7 @@ class Character
 
 	def action(target)
 		action_num = rand(1..20)
-		decision_message_and_flu(target, CharacterAction.msg(action_num))
+		decision_message(name, target.name, CharacterAction.msg(action_num))
 
 		target.flu_love_grade(action_num)
 		flu_hp(action_num)
@@ -24,7 +24,7 @@ class Character
 		value_flat
 		target.value_flat
 
-		flu_message(target, CharacterAction.impact_hp(action_num), CharacterAction.impact_love_grade(action_num))
+		flu_message(name, target.name, CharacterAction.impact_hp(action_num), CharacterAction.impact_love_grade(action_num))
 	end
 
 	def flu_love_grade(num)

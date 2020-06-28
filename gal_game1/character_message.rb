@@ -1,65 +1,18 @@
 module CharacterMessage
 
-	def decision_message_and_flu(target, msg)
+	def decision_message(playername, targetname, msg)
 		puts "-----------------------------------"
-    puts msg.gsub(/#playername|#targetname/, "#playername" => name, "#targetname" => target.name)
-    puts "-----------------------------------"
+		puts msg.gsub(/#playername|#targetname/, "#playername" => playername, "#targetname" => targetname)
+		puts "-----------------------------------"
 
 	end
 
-	def flu_message(target, hp_flu, love_flu)
-		if hp_flu > 0 && love_flu > 0
-			puts <<~EOS
-			------------------------------------
-			#{name}のHPが#{hp_flu}あがった。
-			#{target.name}の好感度が#{love_flu}あがった。
-			-------------------------------------
-			EOS
-		elsif hp_flu < 0 && love_flu > 0
-			puts <<~EOS
-			------------------------------------
-			#{name}のHPが#{hp_flu}さがった。
-			#{target.name}の好感度が#{love_flu}あがった。
-			-------------------------------------
-			EOS
-		elsif hp_flu > 0 && love_flu < 0
-			puts <<~EOS
-			------------------------------------
-			#{name}のHPが#{hp_flu}あがった。
-			#{target.name}の好感度が#{love_flu}さがった。
-			-------------------------------------
-			EOS
-		elsif hp_flu < 0 && love_flu < 0
-			puts <<~EOS
-			------------------------------------
-			#{name}のHPが#{hp_flu}さがった。
-			#{target.name}の好感度が#{love_flu}さがった。
-			-------------------------------------
-			EOS
-		elsif hp_flu == 0 && love_flu > 0
-			puts <<~EOS
-			------------------------------------
-			#{target.name}の好感度が#{love_flu}あがった。
-			-------------------------------------
-			EOS
-		elsif hp_flu == 0 && love_flu < 0
-			puts <<~EOS
-			------------------------------------
-			#{target.name}の好感度が#{love_flu}さがった。
-			-------------------------------------
-			EOS
-		elsif hp_flu > 0 && love_flu == 0
-			puts <<~EOS
-			------------------------------------
-			#{name}のHPが#{hp_flu}あがった。
-			-------------------------------------
-			EOS
-		elsif hp_flu < 0 && love_flu == 0
-			puts <<~EOS
-			------------------------------------
-			#{name}のHPが#{hp_flu}さがった。
-			-------------------------------------
-			EOS
-		end	
+	def flu_message(playername, targetname, hp_flu, love_flu)
+		puts "------------------------------------"
+		puts "#{playername}のHPが#{hp_flu}あがった。" if hp_flu > 0
+		puts "#{playername}のHPが#{hp_flu}あがった。" if hp_flu < 0
+		puts "#{targetname}の好感度が#{love_flu}あがった。" if love_flu > 0
+		puts "#{targetname}の好感度が#{love_flu}さがった。" if love_flu < 0
+		puts "------------------------------------"
 	end
 end

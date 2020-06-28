@@ -20,18 +20,18 @@ module GamesMessage
 
 	def input_boy_name
 		loop do
-      puts "主人公の名前を入力してください"
-      @player.name = gets.chomp
-      break @player.name unless @player.name.empty?
-     end
+			puts "主人公の名前を入力してください"
+			@player.name = gets.chomp
+			break @player.name unless @player.name.empty?
+		end
 	end
 
 	def input_girl_name
 		loop do
-      puts "ヒロインの名前を入力してください"
-      @target.name = gets.chomp
-      break @target.name unless @target.name.empty?
-     end
+			puts "ヒロインの名前を入力してください"
+			@target.name = gets.chomp
+			break @target.name unless @target.name.empty?
+		end
 	end
 
 	def status_enter
